@@ -11,6 +11,8 @@ public class CustomerMovement : MonoBehaviour
 
     private Animator animator;
 
+    public bool IsMoving { get; private set; }
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -22,18 +24,32 @@ public class CustomerMovement : MonoBehaviour
         finalTarget = destination;
         currentPoint = 0;
 
+        IsMoving = true;
+
         if (animator != null)
             animator.SetBool("IsWalking", true);
     }
 
+    public void MoveTo(Transform destination)
+    {
+        pathPoints = null;
+        finalTarget = destination;
+        currentPoint = 0;
+
+        IsMoving = destination != null;
+
+        if (animator != null)
+            animator.SetBool("IsWalking", IsMoving);
+    }
+
     void Update()
     {
-        if (pathPoints == null || finalTarget == null)
+        if (!IsMoving || finalTarget == null)
             return;
 
         Transform target;
 
-        if (currentPoint < pathPoints.Length)
+        if (pathPoints != null && currentPoint < pathPoints.Length)
             target = pathPoints[currentPoint];
         else
             target = finalTarget;
@@ -46,12 +62,13 @@ public class CustomerMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.position) < 0.05f)
         {
-            if (currentPoint < pathPoints.Length)
+            if (pathPoints != null && currentPoint < pathPoints.Length)
             {
                 currentPoint++;
             }
             else
             {
+                IsMoving = false;
                 pathPoints = null;
                 finalTarget = null;
 

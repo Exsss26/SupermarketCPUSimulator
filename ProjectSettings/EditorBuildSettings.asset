@@ -5,9 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 2ae15eb157a777d4598a5d5d4a210767
+  - enabled: 1
+    path: Assets/Scenes/KalkulatorCpuShadule.unity
+    guid: 64c0de3d00f746e4e8e3062a541b9705
+  - enabled: 1
+    path: Assets/Scenes/SupermarketScene.unity
+    guid: 5308c9ba4bd516e44b61ca0ed6d2efa4
+  - enabled: 1
+    path: Assets/Scenes/HasilCpu.unity
+    guid: f970281612be6fe489872be3bb74ace5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
